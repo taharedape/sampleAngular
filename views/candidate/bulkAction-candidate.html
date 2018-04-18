@@ -1,0 +1,74 @@
+<div class="bg-gray-lighter text-grey-light col-xs-12 col-sm-10 col-sm-offset-1 xs-p-0">
+    <div class="bg-white col-xs-12 xs-p-0">
+        <div class="col-xs-12 text-right text-grey-light xs-pt-5 xs-pb-5 xs-pl-15 xs-p-r-15 f-s-18" ng-click="closeModal()">X</div>
+        <div class="bg-white col-xs-10 xs-pt-0 xs-pl-10 xs-pr-10 xs-pb-10">
+            <span class="col-xs-7 f-w-700 text-black f-s-18 t-t-capitalize">
+                {{action}} candidates
+            </span>
+            <span class="col-sm-4 col-xs-4 link link-default xs-mb-10 xs-p-0 xs-m-0">
+                <li class="dropdown list-style-none">
+                    <a data-toggle="dropdown" class="text-info">
+                        <div class="form-group group xs-mb-0 xs-mt-5">
+                            <span class="group auto f-w-700">
+                                Choose Template
+                            </span>
+                            <div class="group">
+                                <span class="caret"></span>
+                            </div>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu text-grey-light min-w-250 text-grey-light">
+                        <li ng-repeat="temp in smsTemplates track by $index" ng-mouseover="mouseOverSmsTemplate(temp)" ng-click="selectSmsTemplate(temp)">
+                            <a ng-bind="temp.name"></a>
+                        </li>
+                    </ul>
+                    <ul class="dropdown-menu text-grey-light min-w-250 text-grey-light" ng-if="smsTemplates.length<1">
+                        <li class><a>No template to select</a></li>
+                    </ul>
+                </li>
+            </span>
+            <div class="col-xs-12 xs-mt-10 xs-mb-10 xs-mt-10 text-grey-light">
+                {{selectedUsers.length}} selected applicant(s) will be moved to
+                <strong ng-if="action=='reject'" class="text-black">Rejected</strong>
+                <strong ng-if="action=='shortlist'" class="text-black">Shortlisted</strong>
+                <strong ng-if="action=='onhold'" class="text-black">Onhold</strong>
+                <strong ng-if="action=='hire'" class="text-black">Hired</strong> tab
+            </div>
+        </div>
+    </div>
+    <div class=" col-xs-12 xs-pl-30 xs-pr-30 xs-pt-20 xs-pb-20">
+        <div class="select" ng-if="action=='reject' || action=='onhold'">
+            <span class="caret"></span>
+            <select class="form-control input-lg f-s-13 h-35">
+                <option>Choose A Reason For Rejection</option>
+                <option ng-repeat="reason in reasons track by $index" ng-bind="reason"></option>
+            </select>
+        </div>
+        <!-- <div class="text-grey f-w-700 xs-pt-10 xs-pb-5">Internal Comment (optional)</div>
+        <div class="bg-white">
+            <textarea class="form-control m-h-140 b-none b-r-5 resize-none box-shadow-0" type="text" ng-model="actionResponse.comment" placeholder="Leave a comment for internal reference, if any. Applicants will not be able to view this message."></textarea>
+        </div> -->
+        <div class="text-grey f-w-700 xs-pt-10 xs-pb-5">Message to Applicant(s)</div>
+        <div class="bg-white">
+            <textarea class="form-control m-h-140 b-none b-r-5 resize-none box-shadow-0" type="text" ng-model="actionResponse.applicantMessage" placeholder="Messages typed here will be sent automatically to applicants through SMS and email."></textarea>
+            <!--my-maxlength="{{maxSmsCount}}"-->
+            <!-- <div class="xs-pl-30 xs-pr-30 xs-pt-10 xs-pb-10">
+                <span class="">
+                    {{actionResponse.applicantMessage.length || 0}}/{{smsCount}} 
+                </span>
+                <span class="pull-right">
+                    Total: 
+                    <span ng-bind="selectedUsers.length * smsCount + ' SMS'"></span>
+                <span ng-bind="totalCreditSelected+ ' credits'">
+                    </span>
+                </span>
+            </div> -->
+        </div>
+    </div>
+    <div class="bg-white col-xs-12 xs-pb-40 xs-pt-10 xs-pl-30 xs-pr-30 xs-pb-20">
+        <div class="col-xs-12 xs-mb-0 text-center">
+            <button class="btn form-control d-inline-block btn-warning" ng-click="closeModal()">Cancel</button>
+            <button class="btn form-control d-inline-block btn-success xs-ml-5  t-t-capitalize" ng-click="checkCredit('notEnoughCredit', action)">{{action}} Candidates Now</button>
+        </div>
+    </div>
+</div>

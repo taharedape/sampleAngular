@@ -1,0 +1,156 @@
+<div class="login-wrapper" ng-style="{'height': loginHeight}" ng-if="loginStatus=='login'">
+    <div class="xs-p-30 text-left">
+        <a class="link" ui-sref="login"><i class="fa fa-angle-left"></i> &nbsp; Back To Main Site</a>
+    </div>
+    <div class="login-top">
+        <div class="login-content text-center">
+            <div class="login md-pl-0 md-pr-0 xs-pl-20 xs-pr-20">
+                <div class="login-header md-pb-30 sm-pb-20 xs-pb-10">
+                    <div class="login-logo">
+                        <img src="images/login/login-logo.png">
+                    </div>
+                    <div class="">
+                        <div class="login-img xs-mt-20">
+                            <img src="images/login/login-picture.png">
+                        </div>
+                        <h4 class="md-mb-40 sm-mb-30 xs-mb-20">....</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="login-bottom">
+        <div class="login-content text-center">
+            <div class="login md-pl-0 md-pr-0 xs-pl-20 xs-pr-20">
+                <div class="login-action md-mt-0 sm-mt-10 xs-mt-15">
+                    <uib-tabset active="selectTabIndex">
+                        <uib-tab heading="Login" select="changeTab(0)" index="0" class="tab col-xs-6">
+                            <form name="loginForm" class="xs-mt-50" ng-submit="login()" novalidate>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group text-left xs-mb-0" ng-class="{ 'has-error' : loginForm.email.$invalid && !loginForm.email.$pristine }">
+                                            <input ng-attr-type="email" ng-model="user.email" name="email" ng-attr-placeholder="Email/Username" class="form-control form-control-dark" required>
+                                            <span ng-if="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block small xs-mb-0">Please enter a valid email</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 md-mt-0 xs-mt-10">
+                                        <div class="form-group text-left xs-mb-0" ng-class="{'has-error': loginForm.password.$invalid && !loginForm.password.$pristine || wrongPassword}">
+                                            <input ng-attr-type="password" ng-model="user.password" ng-focus="resetForm('wrongPassword')" name="password" ng-attr-placeholder="Password" class="form-control form-control-dark" required>
+                                            <span ng-if="loginForm.password.$invalid && !loginForm.password.$pristine && !wrongPassword" class="help-block small xs-mb-0"> Please enter a valid password</span>
+                                            <span ng-if="wrongPassword" class="help-block small xs-mb-0">Password didn't match. Please try again.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row xs-mt-10">
+                                    <div class="col-xs-6 text-left">
+                                        <div class="checkbox xs-mb-0 xs-mt-0">
+                                            <label>
+                                                <input ng-attr-type="checkbox" name="">
+                                                <span class="text-grey-lighter"><small>Keep me sign in</small></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 text-left">
+                                        <a ui-sref="forgot-password" class="link link-underline link-default text-grey-lighter "><small>Forgot your password?</small></a>
+                                    </div>
+                                </div>
+                                <div class="row xs-mt-50">
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <button ng-attr-type="submit" class="btn btn-primary form-control" ng-bind="loginTxt" ng-attr-value="submit" ng-class="{'disabled': loginTxt == 'Signning In...'}" ng-disabled="loginForm.$invalid"></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </uib-tab>
+                        <uib-tab heading="Register" select="changeTab(1)" index="1" class="tab col-xs-6">
+                            <form name="registrationFrom" ng-animate="animation" class="xs-mt-50" ng-submit="signUp()" novalidate>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group xs-mb-0 text-left" ng-class="{'has-error':registrationFrom.email.$invalid && !registrationFrom.email.$pristine || emailStatus}">
+                                            <input ng-attr-type="email" name="email" ng-attr-placeholder="Email" class="form-control form-control-dark" ng-model="newUser.email" required>
+                                            <div class="xs-mt-10">
+                                                <span class="help-block small xs-mb-0" ng-if="registrationFrom.email.$invalid && !registrationFrom.email.$pristine"> Please enter a valid email</span>
+                                                <span class="help-block small xs-mb-0" ng-if="emailStatus=='taken'">This Email, has already been registered. Kindly use another email.</span>
+                                                <span class="help-block small xs-mb-0" ng-if="emailStatus=='invalid'">Please enter a valid email</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 md-mt-0 xs-mt-10">
+                                        <div class="form-group xs-mb-0 text-left" ng-class="{'has-error':registrationFrom.contactNumber.$invalid && !registrationFrom.contactNumber.$pristine || contactStatus}">
+                                            <input ng-attr-type="text" name="contactNumber" class="form-control form-control-dark" ng-model="newUser.contact_number" valid-number ng-intl-tel-input data-initial-country="my" data-placeholder-number-type='MOBILE'>
+                                            <div class="xs-mt-10">
+                                                <span class="help-block small xs-mb-0" ng-if="registrationFrom.contactNumber.$invalid && !registrationFrom.contactNumber.$pristine ">Please enter a valid phone number.</span>
+                                                <span class="help-block small xs-mb-0" ng-if="contactStatus=='taken'">This Mobile No, has already been registered. Kindly use another mobile no.</span>
+                                                <span class="help-block small xs-mb-0" ng-if="contactStatus=='invalid'">Please enter a valid number.</span>
+                                            </div>
+                                        </div>
+                                        <span class="help-block small xs-mb-0 xs-mt-10 text-left text-grey-lighter"> Optional but highly recommended.</span>
+                                    </div>
+                                </div>
+                                <div class="row xs-mt-50">
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <button ng-attr-type="submit" class="btn btn-primary form-control" ng-bind="signUpTxt" ng-attr-value="submit" ng-class="{'disabled': loginTxt == 'Registering...'}" ng-disabled="!registrationFrom.$valid "></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </uib-tab>
+                    </uib-tabset>
+                </div>
+            </div>
+            <div class="login-background">
+                <img src="images/login/login-curve-2.png">
+            </div>
+        </div>
+        <div class="login-footer">
+            <div class="text-center xs-p-20 xs-pt-0 xs-pb-0">
+                <p class="text-grey xs-mb-20 xs-mt-30">...</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
+
+<div class="login-wrapper" ng-style="{'height': loginHeight}" ng-if="loginStatus=='confirmation'">
+    <div class="login-page">
+
+        <div class="container">
+            <div class="login-page-header">
+                <div class="xs-pt-20">
+                    <a class="link hide" ui-sref="login"><i class="fa fa-angle-left"></i> &nbsp; Back To Main Site</a>
+                </div>
+                
+                <div class="login-logo xl-mt-100 lg-mt-20  xs-mt-20  md-mb-30 xs-mb-20 ">
+                    <img src="images/login/login-logo.png">
+                </div>   
+            </div>
+
+            <div class="login-page-content bg-white">
+                <div class="login-content md-p-50 sm-p-40 xs-p-30 text-center">
+
+                    <div class="alert-circle alert-success"><i class="fa fa-check"></i></div>
+                    <h3 class="text-bold">An email has been sent to <span ng-bind="newUser.email"></span></h3>
+                    <p class="xs-mb-0 xs-mt-20 text-grey">
+                        If you have not received an email after 5 minutes, <a ng-click="resendVerification(newUser)">Click here</a> to resend or <a ng-click="liveChat()">Contact Us</a>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        
+        <div class="login-page-footer">
+            <div class="login-footer">
+                <div class="text-center xs-p-20">
+                    
+                </div>
+                <div class="login-background">
+                    <img src="images/login/login-curve-2.png">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+-->
+
+
+

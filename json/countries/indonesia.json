@@ -1,0 +1,134 @@
+[
+	{
+		"name": "Nanggro Aceh Darussalam",
+		"code": "ID-JW"
+	},
+	{
+		"name": "Sumatera Utara",
+		"code": "ID-KA"
+	},
+	{
+		"name": "Sumatera Barat",
+		"code": "ID-ML"
+	},
+	{
+		"name": "Kepulauan Riau",
+		"code": "ID-NU"
+	},
+	{
+		"name": "Jambi",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Sumatera Selatan",
+		"code": "ID-SL"
+	},
+	{
+		"name": "Bangka Belitung ",
+		"code": "ID-SM"
+	},
+	{
+		"name": "Bengkulu",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Lampung",
+		"code": "ID-PP"
+	},
+	{
+		"name": "DKI Jakarta",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Jawa Barat",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Banten",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Jawa Tengah",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Daerah Istimewa Yogyakarta",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Jawa Timur",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Bali",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Nusa Tenggara Barat",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Nusa Tenggara Timur",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Kalimantan Barat",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Kalimantan Tengah",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Kalimantan Selatan",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Kalimantan Timur",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Kalimantan Utara",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Sulawesi Utara",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Sulawesi Barat",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Sulawesi Tengah",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Sulawesi Tenggara",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Sulawesi Selatan",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Gorontalo",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Maluku",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Maluku Utara",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Papua Barat",
+		"code": "ID-PP"
+	},
+	{
+		"name": "Papua",
+		"code": "ID-PP"
+	}
+]

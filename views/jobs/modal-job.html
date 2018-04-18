@@ -1,0 +1,92 @@
+<div class="bg-white col-xs-12 col-sm-10 col-sm-offset-1">
+    <div class="col-xs-12 xs-pt-10 xs-pr-5">
+        <span class="pull-right text-grey-light link link-default" ng-click="closeModal()">X</span>
+    </div>
+    <div ng-if="modalStatus=='duplicate'">
+        <div class="col-xs-12 xs-p-10 sm-pl-0 sm-pt-20">
+            <div class=" col-xs-12">
+                <h5 class="modal-title">Duplicate From Previous Job</h5>
+            </div>
+            <div class=" col-xs-12">
+                <ui-select ng-model="data.selected" theme="bootstrap" class="col-md-10 col-lg-10 col-sm-10 col-xs-12 xs-pl-0 xs-pt-20 xs-pb-20">
+                    <ui-select-match placeholder="Select A Job">
+                        {{$select.selected.name}}
+                    </ui-select-match>
+                    <ui-select-choices refresh="fetch($select)" refresh-delay="300" repeat="item in items | filter: $select.search">
+                        {{$index}} - {{item.name}}
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <div class=" col-xs-12 text-center xs-pt-20 xs-pb-20">
+                <button class="btn form-control d-inline-block btn-info text-uppercase" ng-click="">DUPLICATE JOB</button>
+            </div>
+        </div>
+    </div>
+    <div ng-if="modalStatus=='template'">
+        <div class="col-xs-12 xs-p-10 sm-pl-0 sm-pt-20">
+            <div class=" col-xs-12">
+                <h5 class="modal-title">Select template</h5>
+            </div>
+            <div class=" col-xs-12">
+                <ui-select ng-model="data.selected" theme="bootstrap" class="col-md-10 col-lg-10 col-sm-10 col-xs-12 xs-pl-0 xs-pt-20 xs-pb-20">
+                    <ui-select-match placeholder="Select">
+                        {{$select.selected.name}}
+                    </ui-select-match>
+                    <ui-select-choices refresh="fetch($select)" refresh-delay="300" repeat="item in items | filter: $select.search">
+                        {{$index}} - {{item.name}}
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <div class=" col-xs-12 text-center xs-pt-20 xs-pb-20">
+                <button class="btn form-control d-inline-block btn-info text-uppercase" ng-click="">APPLY TEMPLATE</button>
+            </div>
+        </div>
+    </div>
+    <div ng-if="modalStatus=='saveTemplate'">
+        <div class="col-xs-12 xs-p-10 sm-pl-0 sm-pt-20">
+            <div class=" col-xs-12">
+                <h5 class="modal-title">Job Title - Template name</h5>
+            </div>
+            <div class=" col-xs-12">
+                <div class="col-md-10 col-lg-10 col-sm-10 col-xs-12 xs-pl-0 xs-pt-20 xs-pb-20">
+                    <input ng-attr-type="text" ng-model="jobTitle" ng-attr-placeholder="ex. Production Manager" class="form-control">
+                </div>
+            </div>
+            <div class=" col-xs-12 text-center xs-pt-20 xs-pb-20">
+                <button class="btn form-control d-inline-block btn-info text-uppercase" ng-click="saveAsTemplate()">SAVE AS A TEMPLATE</button>
+            </div>
+        </div>
+    </div>
+    <div ng-if="modalStatus=='unlockApplicants'" class="text-center text-grey">
+        <div class="col-xs-12 xs-p-10 sm-pl-0 sm-pt-20">
+            <div class=" col-xs-12">
+                <h4 class="modal-title text-bold">What Is Unlock All Applicants?</h4>
+            </div>
+            <div class="col-xs-12">
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 xs-pl-0 xs-pt-20 xs-pb-20">
+                    <p>After posting a job ad and start receiving applicants, you need to unlock applicants for the job ad in order to view full details and perform actions. </p>
+                    <p>You could always unlock applicants after you post the job ad, however, It will cost you 225 credits instead of 175 credits.</p>
+                </div>
+            </div>
+            <div class=" col-xs-12 text-center xs-pt-20 xs-pb-20">
+                <button class="btn form-control d-inline-block btn-primary" ng-click="closeModal()">Okay, i get it!</button>
+            </div>
+        </div>
+    </div>
+    <div ng-if="modalStatus=='boosterCUgrade'" class="text-center text-grey">
+        <div class="col-xs-12 xs-p-10 sm-pl-0 sm-pt-20">
+            <div class=" col-xs-12">
+                <h4 class="modal-title text-bold">Would you like to Upgrade to Booster C?</h4>
+            </div>
+            <div class="col-xs-12">
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 xs-pl-0 xs-pt-20 xs-pb-20">
+                    <p>This booster plan gives you > 50 guaranteed applicants for 488 credits only</p>
+                </div>
+            </div>
+            <div class=" col-xs-12 text-center xs-pt-20 xs-pb-20">
+                <button class="btn form-control d-inline-block btn-warning" ng-click="closeModal()">Maybe Next Time</button>
+                <button class="btn form-control d-inline-block btn-primary" ng-click="upgradeCBooster()">Yes Please!</button>
+            </div>
+        </div>
+    </div>
+</div>

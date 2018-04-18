@@ -1,0 +1,43 @@
+<div class="sidebar" ng-style="{'height': sidebarHeight}">
+    <div class="sidebar-wrap">
+        <!--sidebar profile-->
+        <div class="sidebar-profile text-center text-white ">
+            <p class="text-bold xs-pt-20"> Hello {{::$root.user.name}}</p>
+            <p class="" ng-bind="::$root.user.role"></p>
+            <div class="xs-pt-50" ng-bind="::$root.user.company_name"></div>
+        </div>
+        <!--sidebar action -->
+        <div class="text-center xs-pl-20 xs-pr-20 xs-mt-30">
+            <button class="col-xs-12 btn btn-sm btn-primary text-uppercase" ui-sref="admin.post-job"><strong class="text-black">Post a job</strong></button>
+            <div class="clearfix"></div>
+        </div>
+        <!-- sidebar menu -->
+        <div class="xs-pl-20 xs-pr-20 xs-mb-20 xs-mt-15">
+            <ul class="menu">
+                <li ng-class="{'active': menuSelected=='Campaign'}"><a class="" ng-click="menuSwitch('Campaign')" ui-sref="admin.campaign"><i class="fa fa-lg fa-dot-circle-o"></i> <span class="text-uppercase">Campaign</span>  <span class="badge badge-primary pull-right"><strong class="text-black">20</strong></span></a></li>
+                <li ng-class="{'active': menuSelected=='Candidates'}" class="dropdown"><a data-toggle="dropdown" class=""><i class="fa fa-lg fa-users"></i> <span class="text-uppercase">Candidates</span> <span class="badge badge-primary pull-right"><strong class="text-black" ng-bind="jobs.length"></strong></span> </a>
+                    <ul class="dropdown-menu dropdown-menu-right sub-menu overflow-x-hidden" ng-style="{'height': sidebarHeight}">
+                        <li><a ng-click="getCandidates('newCandidate')">New Candidates<span class="badge badge-primary pull-right"><strong class="text-black">20</strong></span></a></li>
+                        <li><a ng-click="getCandidates('allCandidate')">All Candidates</a></li>
+                        <li><a ng-click="getCandidates('activeCandidate')">All Active Candidates</a></li>
+                        <li class="md-mt-40">
+                            <a>VIEW BY JOBS</a>
+                            <hr>
+                        </li>
+                        <li><a ng-repeat="job in jobs" ng-click="getCandidates(job.id); menuSwitch('Candidates')">{{job.title}}</a></li>
+                    </ul>
+                </li>
+                <li ng-class="{'active': menuSelected=='Analytics'}"><a class=""  ng-click="menuSwitch('Analytics')" ui-sref="admin.analytics"><i class="fa fa-lg fa-bar-chart"></i> <span class="text-uppercase">Analytics</span> </a></li>
+                <li ng-class="{'active': menuSelected=='JobList'}"><a class=""  ng-click="menuSwitch('JobList')" ui-sref="admin.job-lists"><i class="fa fa-lg fa-briefcase"></i> <span class="text-uppercase">Job List</span> </a></li>
+                <li ng-class="{'active': menuSelected=='TalentSearch'}"><a class=""><i class="fa fa-lg fa-user-circle-o"></i> <span class="text-uppercase">Talent Search</span> </a></li>
+                <li ng-class="{'active': menuSelected=='Template'}"><a class="" ng-click="menuSwitch('Template')" ui-sref="admin.template"><i class="fa fa-wrench"></i> <span class="text-uppercase">Template</span> <span class="badge badge-primary pull-right"><strong class="text-black">11</strong></span></a></li>
+            </ul>
+        </div>
+        <!-- sidebar footer -->
+        <div class="sidebar-footer">
+            <div class="xs-pl-20 xs-pr-20 xs-mb-20 text-center">
+                
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="bg-white text-grey-light col-xs-12 col-sm-10 col-sm-offset-1 xs-p-0">
+    <div class=" col-xs-12 xs-p-0">
+        <div class="col-xs-12 text-right text-grey-light xs-p-20 f-s-18 pointer" ng-click="closeModal()">
+            X
+        </div>
+        <div class=" col-xs-12 xs-p-10">
+            <span class="col-sm-6 col-xs-6 f-w-700 text-black f-s-18">
+                Forward Resumes
+            </span>
+            <div class="col-xs-12 xs-mt-10 xs-mb-10 text-grey-light">
+                {{selectedUsers.length}} selected applicants will be forwared to the email addresses provided below:
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 xs-mt-10 xs-p-10">
+        <div class="col-sm-8 col-xs-12 xs-mb-10 ">
+            <input ng-attr-type="email" ng-model="email" name="forwardEmail" ng-attr-placeholder="someone@gmail.com" class="form-control">
+            <span ng-if="jobDetails.newEmail.$invalid && !jobDetails.newEmail.$pristine" class="help-block small xs-mb-0">Please enter a valid email</span>
+        </div>
+        <button class="btn btn-outline btn-info text-bold xs-ml-20 sm-ml-0" ng-click="addEmail()">Add</button>
+        <div class="col-xs-12 xs-mt-15">
+            <div ng-repeat="d in emails track by $index" class="btn btn-primary lg-m-5 md-m-5 sm-m-5 xs-m-5 filter-tag">{{d}} <span class="xs-m-5" ng-click="removeFromArray($index, emails)">x</span></div>
+        </div>
+    </div>
+    <div class=" col-xs-12 xs-pl-30 xs-pr-30 xs-pt-10 xs-pb-10">
+        <textarea class="form-control m-h-140 b-r-5 resize-none" type="text" ng-model="message" placeholder="Leave a message here to recipients. Applicants will not be able to view this message, no be notified that their resume has been forwarded."></textarea>
+    </div>
+    <div class=" col-xs-12 xs-pt-20 xs-pb-40 xs-p-30">
+        <div class="col-xs-12 xs-mt-30 xs-mb-0 text-center">
+            <button class="btn form-control d-inline-block btn-warning" ng-click="closeModal()">Cancel</button>
+            <button class="btn form-control d-inline-block btn-success xs-ml-5" ng-click="forwardResume()">Forward Now</button>
+        </div>
+    </div>
+</div>

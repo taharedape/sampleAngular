@@ -1,0 +1,40 @@
+<div class="navigation-wrap">
+    <div class="navigation-inner">
+        <div class="container-fluid">
+            <div class="navigation" id="navigation">
+                <div class="navigation-left">
+                    <span class="pointer"  ng-click="sidebarToggle()"><i class="fa fa-lg fa-bars"></i></span>
+                    <img src="../../images/ajt-logo.png" style="width: 95px;padding-left: 10px">
+                </div>
+                <div class="navigation-right auto text-right">
+                    <ul class="menu">
+                        <li><a class="" href=""><i class="fa fa-lg fa-comments"></i></a></li>
+                        <li><a class="" href=""><i class="fa fa-lg fa-calendar"></i></a></li>
+                        <li><a class="" href=""><i class="fa fa-lg fa-bell"></i> <span class="fa fa-circle text-primary"></span></a></li>
+                        <li class="hidden-xs"><a href="" class="btn btn-xs btn-outline btn-primary btn-success text-uppercase text-bold">Enterprise</a></li>
+                        <li><a href="" class="text-uppercase text-bold text-success" ng-bind="'$ '+$root.credit"></a></li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown">
+                                <div class="form-group group xs-mb-0">
+                                    <div class="group auto">
+                                        <div class="navigation-profile" style="background-image: url('../../images/user.jpg');"></div>
+                                    </div>
+                                    <div class="group xs-pl-5">
+                                        <span class="caret"></span>
+                                    </div>
+                                </div>  
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li class="active" ><a ui-sref="admin.profile">Account</a></li>
+                                <li><a href="">Privacy</a></li>
+                                <li><a href="">Setting</a></li>
+                                <li class="disabled"><a href="">Upgrade</a></li>
+                                <li class="divider"></li>
+                                <li><a ng-click="logOut()">Log out</a></li>
+                            </ul></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

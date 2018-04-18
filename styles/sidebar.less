@@ -1,0 +1,85 @@
+.sidebar {
+    .fixed;
+    background: @theme-background;
+    width: @sidebar-width;
+    z-index: 999;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    .sidebar-wrap {
+        display: table;
+        height: inherit;
+        width: 100%;
+    }
+    .sidebar-profile {
+        background: url('../images/background.png');
+        height: 170px;
+        background-size: cover;
+        background-position: center;
+    }
+    .menu{
+        .menu(block,
+        0px);
+        li a {
+            color: @theme-navigation;
+            padding: 10px 15px;
+            .fa {
+                width: 25px;
+            }
+        }
+        li.active a,
+        li a:hover {
+            .relative;
+            background: @gray-darker;
+            .text-white;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            &:before {
+                content: '';
+                position: absolute;
+                height: 100%;
+                width: 20px;
+                right: -20px;
+                top: 0;
+                background: @gray-darker;
+            }
+        }
+        .badge {
+            margin-top: -1px;
+        }
+    }
+    .sub-menu {
+        width: 250px;
+        left: 250px;
+        z-index: 10000;
+        background: #2d3041;
+        top: 53px;
+        position: fixed;
+    }
+    .sub-menu {
+         li.active a,
+        li a:hover {
+            .relative;
+            background: @gray;
+            .text-white !important;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            &:before {
+                content: '';
+                position: absolute;
+                height: 100%;
+                width: 20px;
+                right: -20px;
+                top: 0;
+                background: @gray;
+            }
+        }
+    }
+    .sidebar-footer {
+        display: table-footer-group;
+        color: @theme-navigation;
+    }
+    @media (max-width: @screen-xs-min) {
+        width: @sidebar-width-xs;
+    }
+}

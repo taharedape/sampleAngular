@@ -1,0 +1,375 @@
+<div class="bg-white md-p-30 xs-p-20 ">
+    <div class="form-group group top xs-mb-0">
+        <div class="group auto">
+            <div class="xs-mb-0 xs-mt-0 pull-left xs-mr-20 t-t-capitalize f-w-700"><span class="text-info link link-underline f-s-18" ng-repeat="job in $root.selectedJob">{{job.title}}</span>
+                <!-- <span class="xs-ml-10 pointer text-grey-light" ng-click="modalPopUp('UnlockJob')"><i class="fa fa-lock" aria-hidden="true"></i></span> -->
+            </div>
+            <div class="pull-left link link-default">
+                <li class="dropdown list-style-none">
+                    <a data-toggle="dropdown" class="text-success">
+                        <div class="form-group group xs-mb-0 xs-mt-5">
+                            <strong class="group auto">
+                                Booster Pack A
+                            </strong>
+                            <div class="group xs-pl-5">
+                                <span class="caret"></span>
+                            </div>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu text-grey-light min-w-250 text-grey-light">
+                        <li class><a>Booster Pack A</a></li>
+                        <li class><a>Booster Pack B <span class="link link-default text-info" ng-click="modalPopUp('boosterUpgrade')">Upgrade now</span></a></li>
+                        <li class><a>Booster Pack C <span class="link link-default text-info" ng-click="modalPopUp('boosterUpgrade')">Upgrade now</span></a></li>
+                        <li class="divider"></li>
+                        <li class><a>Unlock This Job <span class="link link-default text-danger" ng-click="modalPopUp('promo')">Promo</span></a></</li>
+                        <li class><a>Make this Job a campaign</a></li>
+                    </ul>
+                </li>
+            </div>
+            <div class="clearfix"></div>
+            <strong class="xs-mb-0 text-grey xs-mt-5 t-t-capitalize">KL branch</strong>
+        </div>
+        <div class="group text-right">
+            <button class="btn form-control d-inline-block btn-info" ng-click="modalPopUp('unlockCandidate')"><i class="fa fa-lock xs-mr-10" aria-hidden="true"></i>UNLOCK THIS JOB</button>
+        </div>
+    </div>
+    
+</div>
+<div class="md-pl-30 md-pr-30 md-pt-20 md-pb-5 xs-p-30 text-white bg-danger arrow">
+    <p class="f-s-13">
+        NEW!!! AWESOME PROMO <strong class="link link-underline pointer" ng-click="">GET IT NOW</strong> OR REGRET IT!  <span class="xs-pl-30">time left 
+          <timer end-time="endTime" class="text-bold">{{hours}}:{{minutes}}:{{seconds}}</timer></span>
+          <!--   <span class="timer" ng-style="fontSize" ng-class="timerColor.color"><timer interval="1000" autostart="false"/>{{hhours}}:{{mminutes}}:{{sseconds}}</span> -->
+      </p>
+  </div>
+  <div class="md-pl-30 md-pr-30 md-pt-30 md-pb-10 xs-p-30">
+
+    <ui-select ng-model="data.selected" ng-change="item2Select()" theme="bootstrap" class="col-md-3 md-mb-0 col-lg-3 lg-mb-0 col-sm-6 col-xs-12 xs-mb-10 md-pl-15 md-pr-10 filter-selection">
+        <ui-select-match placeholder="Job Title">
+            {{$select.selected.name}}
+        </ui-select-match>
+        <ui-select-choices refresh="fetch($select)" refresh-delay="10" repeat="item in items1 | filter: $select.search">
+            {{item.name}}
+        </ui-select-choices>
+    </ui-select>
+    <!-- Taha check this filter-->
+    <ui-select ng-model="data.selected" ng-change="item2Select()" theme="bootstrap" class="col-md-3 md-mb-0 col-lg-3 lg-mb-0 col-sm-6 col-xs-12 xs-mb-10 md-pl-10 md-pr-10 filter-selection" ng-if="brands.length<1">
+        <ui-select-match placeholder="Outlsets">
+            {{$select.selected.name}}
+        </ui-select-match>
+        <ui-select-choices refresh="fetch($select)" refresh-delay="10" repeat="item in items2 | filter: $select.search">
+            {{item.name}}
+        </ui-select-choices>
+    </ui-select>
+    <div class="col-md-3 md-mb-0 col-lg-3 lg-mb-0 col-sm-6 col-xs-12 xs-mb-10 xs-ml-10 xs-p-0 md-pr-10 bg-white b-r-20 h-33 pointer" ng-if="brands.length>0">
+        <li class="dropdown list-style-none text-grey-light">
+            <div data-toggle="dropdown" class="l-h-2-7">
+                <div class="form-group group xs-mb-0">
+                    <div class="group xs-pl-20 text-grey-light">Outlets
+                        <span class="caret pull-right xs-mr-15 xs-mt-15"></span>
+                    </div>
+                </div>
+            </div>
+            <ul class="dropdown-menu col-xs-12 min-w-350 xs-p-0 t-t-capitalize" ng-click="$event.stopPropagation()">
+                <uib-accordion>
+                    <div uib-accordion-group class="panel-default" is-open="b.open" ng-repeat="b in brands">
+                        <uib-accordion-heading>{{b.brandName}}<i class="pull-right fa text-info" ng-class="{'fa-minus-circle': b.open, 'fa-plus-circle': !b.open}"></i>
+                        </uib-accordion-heading>
+                        <div class="form-group">
+                            <div class="checkbox col-xs-12 xs-p-0">
+                                <label class="col-xs-12 sm-mt-10 xs-mt-5" ng-repeat="branch in b.branchName">
+                                    <input type="checkbox" ng-model="branchSelected" ng-change="filter('branch',branch,branchSelected,b.brandName)">
+                                    <span>{{branch.name}}</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </uib-accordion>
+                <!-- <li class="active" ><a ui-sref="admin.profile">Account</a></li> -->
+                <!-- <li ng-repeat="s in selectedItemsFilter4"><a href="">{{s}}</a></li> -->
+                    <!-- <li><a href="">Setting</a></li>
+                                <li class="disabled"><a href="">Upgrade</a></li>
+                                <li class="divider"></li>
+                                <li><a ng-click="logOut()">Log out</a></li> -->
+                            </ul>
+                        </li>
+                    </div>
+
+        <!--  <ui-select ng-model="data.selected" ng-change="item3Select(data.selected)" theme="bootstrap" class="col-md-3 col-lg-3 col-sm-6 sm-mb-0 col-xs-6 xs-mb-10 md-pl-10 md-pr-0 sm-pr-0 xs-pr-0 filter-selection">
+            <ui-select-match class="multi-filter1" placeholder="+ Add Filter Type">
+                {{$select.selected.name}}
+            </ui-select-match>
+            <ui-select-choices refresh="fetch($select)" refresh-delay="10" repeat="item in items3 | filter: $select.search">
+                {{item.name}}
+            </ui-select-choices>
+        </ui-select> -->
+        <!--   <div ng-dropdown-multiselect="" options="filter4" ng-model="selectedItemsFilter4" selected-model="selectedItemsFilter4" checkboxes="true" extra-settings="filter4Setting" class="col-md-3 col-lg-3 col-sm-6 sm-mb-0 col-xs-6 xs-mb-10 sm-pl-0 sm-pr-0 xs-pr-0 xs-pl-0 md-pl-0 md-pr-0 multi-filter2"></div> -->
+        <div class="col-md-3 md-mb-0 col-lg-3 lg-mb-0 col-sm-6 col-xs-12 xs-mb-10 xs-ml-20 md-p-0 bg-white b-r-20 h-33 pointer">
+            <li class="dropdown list-style-none text-grey-light">
+                <div data-toggle="dropdown" class="l-h-2-7">
+                    <div class="form-group group xs-mb-0">
+                        <div class="group xs-pl-20 text-grey-light">
+                            <i class="fa fa-plus xs-pr-5 f-s-13" aria-hidden="true"></i> Add Filter
+                            <span class="caret pull-right xs-mr-15 xs-mt-15"></span>
+                        </div>
+                    </div>
+                </div>
+                <ul class="dropdown-menu col-xs-12 min-w-350 xs-p-0 t-t-capitalize" ng-click="$event.stopPropagation()">
+                    <uib-accordion>
+                        <div uib-accordion-group class="panel-default" is-open="education.open">
+                            <uib-accordion-heading>
+                                Accepted Education<i class="pull-right fa text-info" ng-class="{'fa-minus-circle': education.open, 'fa-plus-circle': !education.open}"></i>
+                            </uib-accordion-heading>
+                            <div class="form-group">
+                                <div class="checkbox col-xs-12 xs-p-0">
+                                    <label class="col-xs-6 sm-mt-10 xs-mt-5">
+                                        <input type="checkbox" ng-model="education.primarySchool" ng-change="filter('education','primary School',education.primarySchool)" value="">
+                                        <span>Primary School</span>
+                                    </label>
+                                    <label class="col-xs-6 sm-mt-10 xs-mt-5">
+                                        <input type="checkbox" ng-model="education.degree" ng-change="filter('education','degree',education.degree)" value="">
+                                        <span>Degree</span>
+                                    </label>
+                                    <label class="col-xs-6 sm-mt-10 xs-mt-5">
+                                        <input type="checkbox" ng-model="education.highSchool" ng-change="filter('education','high School',education.highSchool)" value="">
+                                        <span>High School</span>
+                                    </label>
+                                    <label class="col-xs-6 sm-mt-10 xs-mt-5">
+                                        <input type="checkbox" ng-model="education.masterPhd" ng-change="filter('education','master/Phd',education.masterPhd)" value="">
+                                        <span>Master/PHD</span>
+                                    </label>
+                                    <label class="col-xs-6 sm-mt-10 xs-mt-5">
+                                        <input type="checkbox" ng-model="education.diploma" ng-change="filter('education','diploma',education.diploma)" value="">
+                                        <span>Diploma</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div uib-accordion-group class="panel-default" is-open="gender.open">
+                            <uib-accordion-heading class="f-s-13">
+                                Gender<i class="pull-right fa text-info" ng-class="{'fa-minus-circle': gender.open, 'fa-plus-circle': !gender.open}"></i>
+                            </uib-accordion-heading>
+                            <div class="form-group">
+                                <div class="radio col-xs-12">
+                                    <label class="col-xs-4" ng-init="gender.type='both'"><!--default both is selected-->
+                                        <input type="radio" ng-model="gender.type" ng-change="filter('gender',gender.type)" value="both">
+                                        <span>Both</span>
+                                    </label>
+                                    <label class="col-xs-4">
+                                        <input type="radio" ng-model="gender.type" ng-change="filter('gender',gender.type)" value="male">
+                                        <span>Male</span>
+                                    </label>
+                                    <label class="col-xs-4">
+                                        <input type="radio" ng-model="gender.type" ng-change="filter('gender',gender.type)" value="female">
+                                        <span>Female</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div uib-accordion-group class="panel-default" is-open="salary.open">
+                            <uib-accordion-heading>
+                                Expected Salary<i class="pull-right fa text-info" ng-class="{'fa-minus-circle': salary.open, 'fa-plus-circle': !salary.open}"></i>
+                            </uib-accordion-heading>
+                            <div class="form-group">
+                                <div class="col-xs-12 xs-p-0 xs-mb-15">
+                                    <ui-select ng-model="currencies.selected" theme="bootstrap" class="col-xs-6 filter-selection xs-p-0">
+                                        <ui-select-match placeholder="Currency">
+                                            {{$select.selected.code}}
+                                        </ui-select-match>
+                                        <ui-select-choices refresh="fetch($select)" refresh-delay="10" repeat="item in currencies | filter: $select.search" >
+                                            {{item.code}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="col-xs-4 xs-p-0">
+                                    <input ng-attr-type="text" ng-model="salary.from" name="ph" ng-attr-placeholder="Min" class="form-control" numbers-only>
+                                    <!--   <span ng-if="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block small xs-mb-0">Please enter a valid email</span> -->
+                                </div>
+                                <div class="col-xs-1 xs-p-5 text-grey-light">
+                                    <i class="fa fa-window-minimize" aria-hidden="true"></i>
+                                </div>
+                                <div class="col-xs-4 xs-p-0">
+                                    <input ng-attr-type="text" ng-model="salary.to" name="ph" ng-attr-placeholder="Max" class="form-control" numbers-only>
+                                </div>
+                                <div class="col-xs-3 xs-pl-5">
+                                    <button class="btn btn-info text-bol" ng-click="filter('salary',currencies.selected.code +     ' ' + salary.from + '-'+salary.to,'')" ng-disabled="!salary.to || !salary.from ||!currencies.selected" ng-bind="salaryBtnText"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div uib-accordion-group class="panel-default" is-open="nationality.open">
+                            <uib-accordion-heading>
+                                Accepted nationality<i class="pull-right fa text-info" ng-class="{'fa-minus-circle': nationality.open, 'fa-plus-circle': !nationality.open}"></i>
+                            </uib-accordion-heading>
+                            <div class="form-group">
+                                <div class="col-xs-9 xs-pl-0">
+                                    <ui-select ng-model="nationality.selected" theme="bootstrap" class="col-xs-12 filter-selection xs-p-0">
+                                        <ui-select-match placeholder="Select or Type">
+                                            {{$select.selected.name}}
+                                        </ui-select-match>
+                                        <ui-select-choices refresh="fetch($select)" refresh-delay="10" repeat="item in nationalities | filter: $select.search">
+                                            {{item.name}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <button class="btn btn-info text-bold xs-ml-20 sm-ml-0" ng-click="filter('nationality',nationality.selected.name)">Add</button>
+                            </div>
+                        </div>
+                        <div uib-accordion-group class="panel-default" is-open="age.open">
+                            <uib-accordion-heading>
+                                Age<i class="pull-right fa text-info" ng-class="{'fa-minus-circle': age.open, 'fa-plus-circle': !age.open}"></i>
+                            </uib-accordion-heading>
+                            <div class="form-group">
+                                <div class="col-xs-4 xs-p-0">
+                                    <input ng-attr-type="text" ng-model="age.from" name="from" ng-attr-placeholder="Min years" class="form-control" numbers-only>
+                                    <!--   <span ng-if="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block small xs-mb-0">Please enter a valid email</span> -->
+                                </div>
+                                <div class="col-xs-1 xs-p-5 text-grey-light">
+                                    <i class="fa fa-window-minimize" aria-hidden="true"></i>
+                                </div>
+                                <div class="col-xs-4 xs-p-0">
+                                    <input ng-attr-type="text" ng-model="age.to" name="to" ng-attr-placeholder="Max years" class="form-control" numbers-only>
+                                </div>
+                                <div class="col-xs-3 xs-pl-5">
+                                    <button class="btn btn-info text-bol" ng-disabled="!age.to || !age.from" ng-click="filter('age',age.from + '-'+age.to,'')" ng-bind="ageBtnText"></button>
+                                </div>
+                                <!-- <div ng-if="age.from>=age.to" class="xs-mb-0 xs-mt-5">
+                                  <small  class="text-danger help-block small">To must be larger than From</small>
+                                </div>
+                                {{age.from}} - {{age.to}} -->
+                            </div>
+                        </div>
+                        <div uib-accordion-group class="panel-default" is-open="location.open">
+                            <uib-accordion-heading>
+                                Location<i class="pull-right fa text-info" ng-class="{'fa-minus-circle': location.open, 'fa-plus-circle': !location.open}"></i>
+                            </uib-accordion-heading>
+                            <div class="form-group">
+                                <div class="col-xs-9 xs-pl-0">
+                                    <ui-select ng-model="country.selected" theme="bootstrap" class="col-xs-12 filter-selection xs-pt-10 xs-pl-0" ng-change="findState(country.selected)">
+                                        <ui-select-match placeholder="Select Country">
+                                            {{$select.selected.name}}
+                                        </ui-select-match>
+                                        <ui-select-choices  repeat="item in nationalities | filter: $select.search">
+                                            {{item.name}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="col-xs-9 xs-pl-0">
+                                    <ui-select ng-model="states.selected" theme="bootstrap" class="col-xs-12 filter-selection xs-pt-10 xs-pl-0">
+                                        <ui-select-match placeholder="Select State">
+                                            {{$select.selected.name}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="item in states | filter: $select.search">
+                                            {{item.name}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="col-xs-9 xs-mt-10 xs-pl-0 xs-pr-35" ng-show="showArea">
+                                    <input ng-attr-type="text" ng-model="taha" name="" ng-attr-placeholder="Add area" class="form-control" >
+                                </div>
+                                
+                                <div class="col-xs-3 xs-pt-10">
+                                    <button class="btn btn-info text-bold xs-ml-20 sm-ml-0"  ng-if="!taha" ng-click="filter('location',states.selected.name)" ng-disabled="!states.selected">Add</button>
+                                    <button class="btn btn-info text-bold xs-ml-20 sm-ml-0" ng-if="taha" ng-click="filter('location',taha)" ng-disabled="!states.selected">Add</button>
+                                </div>
+
+                                <div class="col-xs-12 link link-default text-info xs-mt-10" ng-click="showArea=true">
+                                    <i class="fa fa-plus" aria-hidden="true"></i> Add Area (optional)
+                                </div>
+                            </div>
+                        </div>
+                        <div uib-accordion-group class="panel-default" is-open="language.open">
+                            <uib-accordion-heading>
+                                Language<i class="pull-right fa text-info" ng-class="{'fa-minus-circle': language.open, 'fa-plus-circle': !language.open}"></i>
+                            </uib-accordion-heading>
+                            <div class="form-group">
+                                <!-- <div class="form-group col-xs-12 xs-p-0">
+                                    <div class="radio col-xs-12 xs-p-0">
+                                        <label class="col-xs-12">
+                                            <input type="radio" ng-model="langType" value="all">
+                                            <span>Candidates required to know all selected languages</span>
+                                        </label>
+                                        <label class="col-xs-12">
+                                            <input type="radio" ng-model="langType" value="either">
+                                            <span>Candidates required to know either of the selected languages</span>
+                                        </label>
+                                    </div>
+                                </div> -->
+                                <div class="col-xs-9 xs-pl-0">
+                                    <ui-select ng-model="language.selected" ng-change="item2Select()" theme="bootstrap" class="col-xs-12 filter-selection xs-p-0" >
+                                        <ui-select-match placeholder="Add a Language">
+                                            {{$select.selected.name}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="item in languages | filter: $select.search">
+                                            {{item.name}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="col-xs-3 xs-pl-5">
+                                    <button class="btn btn-info text-bold xs-ml-20 sm-ml-0" ng-click="filter('language',language.selected.name)" ng-disabled="!language.selected">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div uib-accordion-group class="panel-default" is-open="experience.open">
+                            <uib-accordion-heading>
+                                Experience<i class="pull-right fa text-info" ng-class="{'fa-minus-circle': experience.open, 'fa-plus-circle': !experience.open}"></i>
+                            </uib-accordion-heading>
+                            <div class="col-xs-4 xs-p-0">
+                                <input ng-attr-type="text" ng-model="experience.from" name="exFrom" ng-attr-placeholder="Min years" class="form-control" numbers-only>
+                                <!--   <span ng-if="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block small xs-mb-0">Please enter a valid email</span> -->
+                            </div>
+                            <div class="col-xs-1 xs-p-5 text-grey-light">
+                                <i class="fa fa-window-minimize" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-xs-4 xs-p-0">
+                                <input ng-attr-type="text" ng-model="experience.to" name="exTo" ng-attr-placeholder="Max years" class="form-control" numbers-only>
+                            </div>
+                            <div class="col-xs-3 xs-pl-5">
+                               <button class="btn btn-info text-bol" ng-disabled="!experience.to || !experience.from" ng-click="filter('experience',experience.from + '-'+experience.to,'')" ng-bind="experienceBtnText"></button>
+                           </div>
+                       </div>
+                       <div uib-accordion-group class="panel-default" is-open="customFilter.open">
+                        <uib-accordion-heading>
+                            Add Your Own Filter<i class="pull-right fa text-info" ng-class="{'fa-minus-circle': customFilter.open, 'fa-plus-circle': !customFilter.open}"></i>
+                        </uib-accordion-heading>
+
+                        <div class="col-xs-8 xs-p-0">
+                            <input ng-attr-type="text" ng-model="customFilter.filter" name="customFilter" ng-attr-placeholder="Type anything" class="form-control">
+                        </div>
+                        <div class="col-xs-3 xs-pl-5">
+                           <button class="btn btn-info text-bol" ng-disabled="!customFilter.filter" ng-click="filter('customFilter',customFilter.filter,'')">Add</button>
+                       </div>
+                   </div>
+               </uib-accordion>
+           </ul>
+       </li>
+   </div>
+   <div class="col-md-2 md-mb-0 col-sm-4 col-xs-8 xs-mb-10 xs-pl-15 xs-pt-10  pointer">
+    <span class="link link-underline text-info" ng-click=clearFiler()>Clear All Filters</span>
+</div>
+<div class="col-xs-12 xs-m-15 xs-p-0 t-t-capitalize">
+    <div ng-repeat="filter in selectedItemsFilter4 track by $index" class="btn btn-primary lg-m-5 md-m-5 sm-m-5 xs-m-5 filter-tag">{{filter}} <span class="xs-m-5" ng-click="remove($index)">x</span></div>
+    <input ng-blur="click()" type="text" ng-if="customFilter" class="btn btn-primary lg-m-5 md-m-5 sm-m-5 xs-m-5 filter-tag"></input><span class="link link-default text-info" ng-click="customFilter=true">+ Add your own filter</span>
+</div>
+</div>
+
+<div class="col-xs-12 xs-pl-50 xs-pr-50 xs-pb-10">
+    <div class="md-pt-10 lg-pt-10 sm-pt-20 xs-pt-15">
+        <div class="link link-default text-grey xs-mr-10 pull-left" ng-class="{'text-bold && text-black': candidateType=='NEW', 'animated fadeIn':$root.action=='NEW'}" ng-click="switchFilter('NEW')">New (5)</div>
+        <div class="link link-default text-grey xs-mr-15 pull-left" ng-class="{'text-bold  && text-black': candidateType=='SHORTLIST','animated fadeIn':$root.action=='shortlist'}" ng-click="switchFilter('SHORTLIST')">Shortlisted (0)</div>
+        <div class="link link-default text-grey xs-mr-15 pull-left" ng-class="{'text-bold  && text-black': candidateType=='Onhold','animated fadeIn':$root.action=='Onhold'}" ng-click="switchFilter('Onhold')">Onhold <i uib-tooltip="Onhold means Keep In View. For candidates that you are unsure whether or not to shortlist, you can put them under this category." uib-tooltip-placement="top" class="fa fa-question-circle" aria-hidden="true"></i> (1)</div>
+        <div class="link link-default text-grey xs-mr-15 pull-left" ng-class="{'text-bold  && text-black': candidateType=='REJECTED', 'animated fadeIn':$root.action=='reject'}" ng-click="switchFilter('REJECTED')">Rejected (4)</div>
+        <div class="link link-default text-grey xs-mr-15 pull-left" ng-class="{'text-bold  && text-black': candidateType=='INTERVIEW'}" ng-click="switchFilter('INTERVIEW')">Interview (3)</div>
+        <div class="link link-default text-grey xs-mr-15 pull-left" ng-class="{'text-bold  && text-black': candidateType=='HIRED','animated fadeIn':$root.action=='Hire'}" ng-click="switchFilter('HIRED')">Hired (5)</div>
+        <div class="link link-default text-info text-bold pull-left" ng-class="{'text-bold  && text-black': candidateType=='MATCHES'}" ng-click="switchFilter('MATCHES')">Matches (1)</div>
+        <div class="pull-right link link-default text-grey">Manual Input Candidates</div>
+    </div>
+</div>
+
+<div class="col-xs-12 candidate-listing">
+    <div class="col-md-12 xs-pl-30 xs-pr-30 xs-pb-100">
+        <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance" class="w-100 row-border hover table candidate-table gray-light">
+        </table>
+
+    </div>
+</div>
+

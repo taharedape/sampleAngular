@@ -1,0 +1,12 @@
+<div ng-controller="menuCtrl">
+	
+	<header data-ng-include="'views/common/topBar.html'"  ></header>
+	<section class="wrapper" ng-class="{'sidebar-toggle': sidebar}">
+		    <aside  data-ng-include="'views/common/sideBar.html'" ></aside>
+		    <section class="page-view" data-ui-view></section>
+	</section>
+
+    <!-- backdrop -->
+    <div class="backdrop pointer" ng-class="{'backdrop-toggle': backdrop}" ng-click="sidebarToggle('close');"></div>
+    <!-- end backdrop -->
+</div>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!-- Id ng-app  IE 8 Support-->
+<html data-ng-app="...." id="ng-app">
+
+<head>
+    <meta charset="UTF-8">
+    <title>....</title>
+    <meta name="viewport" content="width=device-width">
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- No cache -->
+    <meta http-equiv='CACHE-CONTROL' content='NO-CACHE'>
+    <meta http-equiv='CACHE-CONTROL' content='NO-STORE'>
+    <meta http-equiv='expires' content='0' />
+    <meta http-equiv='pragma' content='no-cache' />
+     <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-sweetalert/dist/sweetalert.css" />
+    <link rel="stylesheet" href="bower_components/ngToast/dist/ngToast.css" />
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" href="bower_components/datatables/media/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="bower_components/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/intl-tel-input/build/css/intlTelInput.css" />
+    <link rel="stylesheet" href="bower_components/summernote/dist/summernote.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="manifest" href="manifest.json">
+    
+
+
+
+    <!-- endbuild -->
+</head>
+
+<body ng-class="{{bodyclass}}">  
+
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- ng  toast -->
+    <toast></toast>
+    <!-- end ng toast -->
+    <!-- Add your site or application content here -->
+    <data ui-view></data>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+    ! function(A, n, g, u, l, a, r) {
+        A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+                (A[l].q = A[l].q || []).push(arguments)
+            }, A[l].l = +new Date, a = n.createElement(g),
+            r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/angular-ui-select/dist/select.js"></script>
+    <script src="bower_components/bootstrap-sweetalert/dist/sweetalert.js"></script>
+    <script src="bower_components/ngToast/dist/ngToast.js"></script>
+    <script src="bower_components/datatables/media/js/jquery.dataTables.js"></script>
+    <script src="bower_components/angular-datatables/dist/angular-datatables.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/colreorder/angular-datatables.colreorder.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/columnfilter/angular-datatables.columnfilter.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/light-columnfilter/angular-datatables.light-columnfilter.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/colvis/angular-datatables.colvis.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/fixedheader/angular-datatables.fixedheader.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.js"></script>
+    <script src="bower_components/angular-datatables/dist/plugins/select/angular-datatables.select.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/intl-tel-input/build/js/intlTelInput.js"></script>
+    <script src="bower_components/ng-intl-tel-input/dist/ng-intl-tel-input.js"></script>
+    <script src="bower_components/summernote/dist/summernote.js"></script>
+    <script src="bower_components/angular-summernote/dist/angular-summernote.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/angularfire/dist/angularfire.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/humanize-duration/humanize-duration.js"></script>
+    <script src="bower_components/angular-timer/dist/angular-timer.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+
+    <!-- Configuration part starts here -->
+
+    <script src="config/app.js"></script>
+    <script src="config/config.js"></script>
+    <script src="config/run.js"></script>
+    <!-- Configuration part ends here -->
+
+    <!-- Common scripts starts-->
+
+    <script src="scripts/common/directives.js"></script>
+    <script src="scripts/common/filter.js"></script>
+    <script src="json/candidates.json"></script>
+    
+
+    <!--for tel library-->
+    <!-- <script src="scripts/common/utils.js"></script> -->
+
+
+    <!-- Common scripts ends-->
+
+    <!-- Controllers starts-->
+
+    <!--Login starts-->
+    <script src="scripts/controllers/login/login.js"></script>
+    <script src="scripts/controllers/login/verification.js"></script>
+    <script src="scripts/controllers/login/forgot-password.js"></script>
+    <script src="scripts/controllers/login/reset-password.js"></script>
+    <script src="scripts/controllers/login/registration-success.js"></script>
+    <!--Login ends-->
+
+    <!-- common starts-->
+    <!-- <script src="scripts/controllers/common/common.js"></script> -->
+    <script src="scripts/controllers/common/menu.js"></script>
+    <script src="scripts/controllers/dashboard.js"></script>
+    <script src="scripts/controllers/template/template.js"></script>
+    <!-- common ends-->
+    
+    <!-- candidates starts-->
+    <script src="scripts/controllers/candidate/candidate.js"></script>
+    <script src="scripts/controllers/candidate/view-candidate.js"></script>
+    <script src="scripts/controllers/candidate/view-candidate-conversation.js"></script>
+    <script src="scripts/controllers/candidate/view-candidate-records.js"></script>
+    <script src="scripts/controllers/candidate/modal-candidate.js"></script>
+    <script src="scripts/controllers/candidate/bulkSms-candidate.js"></script>
+    <script src="scripts/controllers/candidate/bulkAction-candidate.js"></script>
+    <script src="scripts/controllers/candidate/forwardResume-candidate.js"></script>
+
+    <!-- candidates ends-->
+
+    <!-- profile starts-->
+    <script src="scripts/controllers/profile/profile.js"></script>
+    <!-- profile ends-->
+
+    <!-- Jobs starts-->
+    <script src="scripts/controllers/jobs/post-job.js"></script>
+    <script src="scripts/controllers/jobs/modal-job.js"></script>
+    <!-- Jobs ends-->
+
+    <!-- Job list starts-->
+    <script src="scripts/controllers/job-lists/job-lists.js"></script>
+    <!-- Job list ends-->
+
+    <!-- analytics starts-->
+    <script src="scripts/controllers/analytics/analytics.js"></script>
+    <!-- analytics ends-->
+
+    <!-- analytics starts-->
+    <script src="scripts/controllers/campaign/campaign.js"></script>
+    <!-- analytics ends-->
+
+    <!-- Controllers ends-->
+
+    <!-- Services starts-->
+
+    <!--Login-->
+    <script src="scripts/services/login/login-service.js"></script>
+    <script src="scripts/services/login/authentication-service.js"></script>
+    <!--Login ends-->
+
+    <!-- common starts-->
+    <script src="scripts/services/common/common-service.js"></script>
+    <!-- common ends-->
+
+    <!-- candidates starts-->
+    <script src="scripts/services/candidate/candidate-service.js"></script>
+    <!-- candidates ends-->
+
+    <!-- jobs starts-->
+    <script src="scripts/services/jobs/jobs-service.js"></script>
+    <!-- jobs ends-->
+   
+    <!-- Services ends-->
+
+    <!-- endbuild -->
+        <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    
+    firebase.initializeApp(config);
+    </script>
+
+</body>
+
+</html>

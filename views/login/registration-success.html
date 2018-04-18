@@ -1,0 +1,44 @@
+<div class="login-wrapper" ng-style="{'height': loginHeight}">
+    <div class="login-page">
+        <div class="container">
+            <div class="login-page-header">
+                <div class="xs-pt-20">
+                    <a class="link hide" ui-sref="login"><i class="fa fa-angle-left"></i> &nbsp; Back To Main Site</a>
+                </div>
+                
+                <div class="login-logo xl-mt-100 lg-mt-20  xs-mt-20  md-mb-30 xs-mb-20 ">
+                    <img src="images/login/login-logo.png">
+                </div>   
+            </div>
+            <div class="login-page-content bg-white">
+                <div class="login-content md-p-50 sm-p-40 xs-p-30 text-center">
+
+                    <!-- <div class="alert-circle alert-success"><i class="fa fa-check"></i></div> -->
+                        <img src="images/icon-tick.svg" width="60px">
+
+                    <h4 class="text-bold">An email has been sent to </h4>
+                    <h4 class="text-bold" ng-bind="user.email"></h4>
+                    <p class="xs-mb-0 xs-mt-20 text-grey">
+                        If you have not received an email after 5 minutes, <a ng-click="resendVerification(newUser)">Click here</a> to resend or <a ng-click="liveChat()">contact us.</a>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="login-page-footer">
+            <div class="login-footer">
+                <div class="text-center xs-p-20">
+                    <p class="text-grey xs-mb-0">...</p>
+                </div>
+                <div class="login-background">
+                    <img src="images/login/login-curve-2.png">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
